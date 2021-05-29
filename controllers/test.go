@@ -12,8 +12,6 @@ type TestHandler struct {
 	Name string `json:"name"`
 }
 
-// var testInstance *TestHandler
-
 func TestGetData(c echo.Context) error {
 	return c.String(http.StatusOK, "dsffsd")
 }
