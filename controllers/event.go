@@ -12,7 +12,7 @@ func GetAllEventsHandler(c echo.Context) error {
 	eventService := services.NewEventService()
 	events, err := eventService.GetAllEventsService()
 	if err != nil {
-		return c.JSON(http.StatusOK, err)
+		return c.JSON(http.StatusOK, CreateErrorResponse(nil, err.GetName(), err.Error()))
 	}
-	return c.JSON(http.StatusOK, events)
+	return c.JSON(http.StatusOK, CreateSuccessResponse(events))
 }
