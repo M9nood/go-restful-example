@@ -2,6 +2,7 @@ package services
 
 import (
 	"m9hub/database"
+	"m9hub/errors"
 
 	eventModel "m9hub/models/event"
 	"m9hub/repositories"
@@ -25,10 +26,11 @@ func NewEventService() *EventService {
 	return eventServiceInstance
 }
 
-func (ev EventService) GetAllEventsService() (eventModel.EventListResponse, error) {
+func (ev EventService) GetAllEventsService() (eventModel.EventListResponse, errors.APIError) {
 	eventServiceInstance.Db = nil
 	eventRepo := repositories.NewEventReposity(eventServiceInstance.Db)
 	result, err := eventRepo.GetAllEvents()
+
 	if err != nil {
 		return eventModel.EventListResponse{}, err
 	}
