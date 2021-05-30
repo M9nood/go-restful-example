@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"m9hub/database"
 	router "m9hub/routes"
@@ -25,7 +24,6 @@ func main() {
 		DB_HOST:     os.Getenv("MYSQL_HOST"),
 		DB_PORT:     os.Getenv("MYSQL_PORT"),
 	}
-	fmt.Println("dbConfigParams", dbConfigParams)
 	database.InitDb(dbConfigParams)
 	router.RouterSetup()
 }
